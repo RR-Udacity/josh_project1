@@ -1,11 +1,14 @@
 ﻿<!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ title }} - My Flask Application</title>
     <link rel="stylesheet" type="text/css" href="/static/content/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="/static/content/site.css" />
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link rel="stylesheet" href="{{url_for('static',filename='content/tw.css')}}"> -->
     <script src="/static/scripts/modernizr-2.6.2.js"></script>
 </head>
 
@@ -21,11 +24,16 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a class="navbar-brand" href="/">Article CMS</a></li>
-                    <li class="dropdown">
+                    <li><a class="navbar-brand" href="/">Josh's Article CMS</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_anonymous %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                            aria-expanded="false">Rubric <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="{{ url_for('screenshots') }}">Screenshots</a></li>
+                        </ul>
+                        {% if current_user.is_anonymous %}
                     <li><a href="{{ url_for('login') }}">Login</a></li>
                     {% else %}
                     <li><a href="{{ url_for('logout') }}">Logout</a></li>
@@ -55,4 +63,5 @@
     {% block scripts %}{% endblock %}
 
 </body>
+
 </html>
