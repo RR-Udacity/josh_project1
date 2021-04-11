@@ -9,7 +9,8 @@ on:
     branches:
       - main
   workflow_dispatch:
-
+env:
+  STARTUP_COMMAND: 'application.py'           # set this to the startup command required to start the gunicorn server. default it is empty
 jobs:
   build:
     runs-on: ubuntu-latest
