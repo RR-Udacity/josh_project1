@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>Sign In</h1>
+<h1 class="text-4xl text-gray-700 my-4">Sign In</h1>
 <form action="" method="post" novalidate>
     {{ form.hidden_tag() }}
     <div class="Jumbotron">
@@ -19,10 +19,10 @@
             <span style="color: red;">[{{ error }}]</span>
             {% endfor %}
         </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+        <p class="my-4">{{ form.remember_me() }} {{ form.remember_me.label }}</p>
         <p>{{ form.submit() }}</p>
     </div>
 </form>
-<h2>OR</h2>
+<h2 class="my-4">OR</h2>
 <a href="{{ auth_url }}"><img src="{{url_for('static', filename='images/sign-in-with-ms.svg')}}" /></a>
 {% endblock %}

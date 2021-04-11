@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<h1>{{ title }}</h1>
+<h1 class="my-8">{{ title }}</h1>
 <form action="" method="post" novalidate enctype="multipart/form-data">
     {{ form.hidden_tag() }}
     <div class="row">
@@ -27,7 +27,7 @@
                 <span style="color: red;">[{{ error }}]</span>
                 {% endfor %}
             </p>
-            <p>{{ form.submit() }}</p>
+            <p class="mt-8">{{ form.submit() }}</p>
         </div>
         <div class="col-sm-4">
             {% if form.image_path.data %}

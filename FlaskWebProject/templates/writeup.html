@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="my-8">
+    <div>
+        <h1 class="text-6xl text-gray-800 my-8">Write-up Template</h1>
+        <blockquote class="text-gray-500">
+            <h1 class="text-4xl text-gray-600">Analyze, choose, and justify the appropriate resource option for
+                deploying
+                the app.</h1>
+            <p class="text-2xl">For both a VM or App Service solution for the CMS app:</p>
+            <ul class="ml-16 list-disc">
+                <li>Analyze costs, scalability, availability, and workflow</li>
+                <li>Choose the appropriate solution (VM or App Service) for deploying the app</li>
+                <li>Justify your choice</li>
+            </ul>
+        </blockquote>
+        <p class="my-4">
+            This class has given me a much better understanding on the pros and cons of a VM and App Service. I've
+            summarized my thoughts in the table below:
+        <div class="my-8 py-2 shadow overflow-hidden rounded border-b border-gray-200">
+            <table class="min-w-full bg-white">
+                <thead class="bg-gray-800 text-white text-xl">
+                    <tr>
+                        <th class="text-left py-3 px-4 uppercase font-semibold">Topic</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold">VM</th>
+                        <th class="text-left py-3 px-4 uppercase font-semibold">App Service</th>
+                    </tr>
+                </thead>
+                <tbody class="text-gray-700">
+                    <tr>
+                        <td class="py-3 px-4">Costs</td>
+                        <td class="py-3 px-4">For a class like this, costs swing easily away from the VM as there are no
+                            free options. The
+                            cheaper options at ~$3/month and ~$7/month are pretty low and reasonable, but if we want to
+                            keep our credits for future projects we should try to avoid costs where possible.</td>
+                        <td class="py-3 px-4">The app service has very limited, but functional free-tier. I've used this
+                            a number of times
+                            throughout the class and this free-tier is sufficient for the practice examples we've done
+                            to date... including this project.</td>
+                    </tr>
+                    <tr class=" bg-gray-100">
+                        <td class="py-3 px-4">Scalability</td>
+                        <td class="py-3 px-4">Virtual machines let you scale up with more power and resources without
+                            redploying (which is powerful in its own right), but you can't scale your VM endpoints out
+                            to more instances when necessary. It would be better to switch to a container service if you
+                            think you might need to scale much past a reasonably priced single VM.</td>
+                        <td class="py-3 px-4">This service allows you to scale up with more vCPU, RAM, etc. as needed.
+                            You can also scale out with up to 30 instances in some cases and 100 in other cases if your
+                            pricing tier allows this scaling.</td>
+                    </tr>
+                    <tr>
+                        <td class="py-3 px-4">Availability</td>
+                        <td class="py-3 px-4">VMs run at 99.99% up-time according to their SLA. This is essentially a
+                            guarantee that it will always be running.</td>
+                        <td class="py-3 px-4">The App service runs at a 99.95% up-time on it's SLA. This is near enough
+                            the same as above to not make a difference. Note: Cloud services have incredible up-time
+                            SLAs and availability across services likely won't be a huge contributor to your decision
+                            unless you are in a very specific situation.</td>
+                    </tr>
+                    <tr class=" bg-gray-100">
+                        <td class="py-3 px-4">Workflow</td>
+                        <td class="py-3 px-4">The VM workflow is pretty standard across all VM development. You'll need
+                            to provision the VM, configure access (I use SSH), update the OS and any apps, install any
+                            necessary hardware, configure networking, etc. All of this can become relatively routine
+                            with enough iterations and practice, but it is time consuming. Adapting it all in a script
+                            or Infrastructure as Code (IAC) can help, but that is also time consuming to learn and
+                            stand-up. Production level security requirements can push this workflow exponentially longer
+                            and audit requirements can start to become tedious.</td>
+                        <td class="py-3 px-4">The workflow in the app-service is as easy as can be. A few clicks to get
+                            it running, and a few clicks to point it at a github repo. I will note at work we use a
+                            gcc-high govCloud and github deployments aren't available in that case... you have to do a
+                            manual code push which is a touch slower, but still light-speed compared to configuring a
+                            new VM.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        </p>
+        <p class="mt-4">I chose to deploy using the Azure App Service. I chose this path for a few reasons:
+        <ul class="list-disc ml-16">
+            <li>I'm using github to store my code, and I can auto-deploy from there with actions.</li>
+            <li>I can stand up the initial test version for free with the basic app service option</li>
+            <li>This app only needs a single deployment (flask). The database is handled as a service. At work, I'd have
+                usually used docker-compose and stood up multiple containers for flask, a database, and an nginx web
+                server for the static files.</li>
+        </ul>
+        </p>
+    </div>
+    <div class="mt-12">
+        <blockquote class="text-gray-500">
+            <h1 class="text-4xl text-gray-600">Assess app changes that would change your decision.</h1>
+            <p class="text-2xl">Detail how the app and any other needs would have to change for you to change your
+                decision in the last
+                section.</p>
+        </blockquote>
+        <p class="my-4">I'm not sure what changes the app would require to make me choose a VM-based deployment. In the
+            past, adding complexity or a database requirement would have accomplished that. Now, we've standardized 100%
+            on containerized applications at work and that is where most of my experience is. I would use App-Service as
+            long as I can configure my app to auto-run from github. If I couldn't, I'd use multi-container deployment
+            into app service. With azure data services being available, that removes a level of complexity where a VM
+            would have been required in the past.</p>
+        <p class="my-4">If the app needed a semi-custom database solution which I needed to configure on my own I would
+            likely use a VM. If I needed to test an app on a specific OS, with specific versions, or using specific
+            tooling that would drive it as well. Honestly though, all of those complexities would be things I'd attempt
+            to remove from my workflow when possible and move more and more towards a containerized standard.</p>
+    </div>
+</div>
+{% endblock %}

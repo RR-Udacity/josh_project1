@@ -33,6 +33,11 @@ def screenshots():
     return render_template('screenshots.html', title='Screenshots for Project 1')
 
 
+@app.route('/writeup')
+def writeup():
+    return render_template('writeup.html', title='Write-Up for Project 1')
+
+
 @app.route('/new_post', methods=['GET', 'POST'])
 @login_required
 def new_post():
