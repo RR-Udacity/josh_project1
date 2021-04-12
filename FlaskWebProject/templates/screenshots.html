@@ -1,23 +1,29 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="flex flex-wrap flex-row mt-20 justify-evenly mb-10">
-    <div class="w-md mx-4 px-4 border text-center py-2">
+<div class="flex flex-wrap flex-row mt-20 justify-around mb-10">
+    <div class="my-8 w-md mx-4 px-4 border text-center py-2">
         <img class="rounded-md mx-auto" style="height: 350px;" src="{{ url_for('static',filename='images/rg.jpg') }}" />
         <h1 class="my-2 text-4xl text-gray-700">Resource Group</h1>
         <p>Screenshot showing the resource group.</p>
     </div>
-    <div class="w-md mx-4 px-4 border text-center py-2">
+    <div class="my-8 w-md mx-4 px-4 border text-center py-2">
         <img class="rounded-md mx-auto" style="height: 350px;"
             src="{{ url_for('static',filename='images/tables.jpg') }}" />
         <h1 class="my-2 text-4xl text-gray-700">SQL Server Tables</h1>
         <p>Populated tables from sql scripts</p>
     </div>
-    <div class="w-lg mx-4 px-4 border text-center py-2">
+    <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
         <img class="rounded-md mx-auto" style="height: 350px;"
             src="{{ url_for('static',filename='images/post.jpg') }}" />
         <h1 class="my-2 text-4xl text-gray-700">New Post Success</h1>
         <p>New posts created from live app service deployment</p>
+    </div>
+    <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
+        <img class="rounded-md mx-auto" style="height: 350px;"
+            src="{{ url_for('static',filename='images/redirect.jpg') }}" />
+        <h1 class="my-2 text-4xl text-gray-700">Redirect URLs</h1>
+        <p>Image show app service and local redirects as well as logout redirect.</p>
     </div>
 </div>
 {% endblock %}

@@ -50,7 +50,7 @@ def new_post():
     if form.validate_on_submit():
         post = Post()
         post.save_changes(form, request.files["image_path"], current_user.id, new=True)
-        app.logger.info("New Post Created - Title: ", post.title, "id: ", post.id)
+        app.logger.info("New Post Created - Title: {}, id: {}".format(post.title, post.id))
         return redirect(url_for("home"))
     return render_template(
         "post.html", title="Create Post", imageSource=imageSourceUrl, form=form
@@ -64,7 +64,7 @@ def post(id):
     form = PostForm(formdata=request.form, obj=post)
     if form.validate_on_submit():
         post.save_changes(form, request.files["image_path"], current_user.id)
-        app.logger.info("Exising Post Edited - Title: ", post.title, "id: ", post.id)
+        app.logger.info("Exising Post Edited - Title: {}, id: {}".format(post.title, post.id))
         return redirect(url_for("home"))
     return render_template(
         "post.html", title="Edit Post", imageSource=imageSourceUrl, form=form
@@ -80,14 +80,13 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             app.logger.warning(
-                "Unauthenticated User or Wrong Password.  Username Entered was: ",
-                form.username.data,
+                "Unauthenticated User or Wrong Password.  Username Entered was: {}".format(form.username.data)
             )
             flash("Invalid username or password")
             return redirect(url_for("login"))
         login_user(user, remember=form.remember_me.data)
         app.logger.info(
-            "Authenticated User: ", form.username.data, "Successfully Logged In"
+            "Authenticated User: {} was Successfully Logged In".format(form.username.data)
         )
         next_page = request.args.get("next")
         if not next_page or url_parse(next_page).netloc != "":
