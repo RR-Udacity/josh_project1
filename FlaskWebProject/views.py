@@ -70,6 +70,15 @@ def post(id):
         "post.html", title="Edit Post", imageSource=imageSourceUrl, form=form
     )
 
+@app.route("/delete/<int:id>", methods=["GET", "POST"])
+@login_required
+def delete(id):
+    post = Post.query.get(int(id))
+    app.logger.warning("Post Titled: {} with id: {} Deleted".format(post.title, post.id))
+    post.delete()
+    flash('Post Image and Content Deleted')
+    return redirect(url_for("home"))
+
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

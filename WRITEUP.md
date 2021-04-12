@@ -1,12 +1,5 @@
 # Write-up Template
 
-### Analyze, choose, and justify the appropriate resource option for deploying the app.
+See write-up [live on the site](http://joshproject1.azurewebsites.net/writeup).
 
-*For **both** a VM or App Service solution for the CMS app:*
-- *Analyze costs, scalability, availability, and workflow*
-- *Choose the appropriate solution (VM or App Service) for deploying the app*
-- *Justify your choice*
-
-### Assess app changes that would change your decision.
-
-*Detail how the app and any other needs would have to change for you to change your decision in the last section.* 
+Or [in the source code](https://github.com/RR-Udacity/josh_project1/blob/main/FlaskWebProject/templates/writeup.html)

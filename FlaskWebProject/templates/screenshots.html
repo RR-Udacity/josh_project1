@@ -21,9 +21,38 @@
     </div>
     <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
         <img class="rounded-md mx-auto" style="height: 350px;"
+            src="{{ url_for('static',filename='images/post2.jpg') }}" />
+        <h1 class="my-2 text-4xl text-gray-700">New Actual Post</h1>
+        <p>Screenshot showing the required post live in the app service.</p>
+    </div>
+    <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
+        <img class="rounded-md mx-auto" style="height: 350px;"
             src="{{ url_for('static',filename='images/redirect.jpg') }}" />
         <h1 class="my-2 text-4xl text-gray-700">Redirect URLs</h1>
         <p>Image show app service and local redirects as well as logout redirect.</p>
+    </div>
+    <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
+        <img class="rounded-md mx-auto" style="height: 350px;"
+            src="{{ url_for('static',filename='images/logs.jpg') }}" />
+        <h1 class="my-2 text-4xl text-gray-700">Logging</h1>
+        <p>Screenshot showing logs for various app activities including logging in and out, post edits, page views, etc.
+            <br /><span class="text-red-700 bg-red-200">Note: I spent an unreasonable amount of time trying to find out
+                why
+                all
+                logs are "ERROR" then given another level after...</span>
+        </p>
+    </div>
+    <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
+        <img class="rounded-md mx-auto" style="height: 350px;"
+            src="{{ url_for('static',filename='images/sql.jpg') }}" />
+        <h1 class="my-2 text-4xl text-gray-700">SQL Tables</h1>
+        <p>Image showing SQL database tables along with a query for the "Posts" table.</p>
+    </div>
+    <div class="my-8 w-lg mx-4 px-4 border text-center py-2">
+        <img class="rounded-md mx-auto" style="height: 350px;"
+            src="{{ url_for('static',filename='images/blob.jpg') }}" />
+        <h1 class="my-2 text-4xl text-gray-700">Blob Solution</h1>
+        <p>Image showing the configuration for the blob storage account container including some endpoints.</p>
     </div>
 </div>
 {% endblock %}
